@@ -106,6 +106,7 @@
             this.tb_pairingcode.Name = "tb_pairingcode";
             this.tb_pairingcode.Size = new System.Drawing.Size(528, 26);
             this.tb_pairingcode.TabIndex = 6;
+            this.tb_pairingcode.TextChanged += new System.EventHandler(this.tb_pairingcode_TextChanged);
             // 
             // label3
             // 

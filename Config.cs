@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using System.Text.RegularExpressions;
 
 namespace PiceaWindowsFormsApp
 {
@@ -25,7 +26,29 @@ namespace PiceaWindowsFormsApp
 
         private void b_pairing_Click(object sender, EventArgs e)
         {
-            RegisterDevice(b_pairing, this, tb_ip.Text, tb_port.Text, tb_pairingcode.Text);
+            string pairingcode = tb_pairingcode.Text;
+            string PiceaIP = tb_ip.Text;
+            if (pairingcode.Contains("code="))
+            {
+                string code = pairingcode;
+                Match match = Regex.Match(pairingcode, @"code=([^&]+)");
+                if (match.Success)
+                {
+                    pairingcode = match.Groups[1].Value.Trim();
+                }
+                if (code.Contains("site_id="))
+                {
+                    Match match2 = Regex.Match(code, @"site_id=([^&]+)");
+                    if (match2.Success)
+                    {
+                        PiceaIP = match2.Groups[1].Value.Trim();
+                        string newIP = $"picea-{PiceaIP}.local";
+                        PiceaIP = newIP;
+                    }
+                }
+            }
+
+            RegisterDevice(b_pairing, this, PiceaIP, tb_port.Text, pairingcode);
         }
 
         public static async Task RegisterDevice(Button b_pairing, Form currentForm, string PiceaIP, string PiceaPort, string PairingCode)
@@ -198,6 +221,11 @@ namespace PiceaWindowsFormsApp
                     }
                 }
             }
+        }
+
+        private void tb_pairingcode_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

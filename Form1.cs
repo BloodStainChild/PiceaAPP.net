@@ -214,78 +214,85 @@ namespace PiceaWindowsFormsApp
             // UI-Elemente aktualisieren
             if (PD != null) // Falls Daten vorhanden sind
             {
-                // Battery
-                lbl_battery_soc.Text = (PD.battery_state_of_charge.ok.val ?? 0).ToString("F2") + " %";
-                lbl_battery_p.Text = (PD.battery_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_battery_op.Text = (PD.battery_output_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_battery_ip.Text = (PD.battery_input_power.ok.val ?? 0).ToString("F2") + " W";
-                // Ext Battery
-                lbl_ext_battery_p.Text = (PD.extbattery_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_ext_battery_op.Text = (PD.extbattery_output_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_ext_battery_ip.Text = (PD.extbattery_input_power.ok.val ?? 0).ToString("F2") + " W";
-                // Electrolyser
-                lbl_electrolyser_ee.Text = (PD.electrolyser_efficiency_electrical.ok.val ?? 0).ToString("F2") + " %";
-                lbl_electrolyser_et.Text = (PD.electrolyser_efficiency_total.ok.val ?? 0).ToString("F2") + " %";
-                lbl_electrolyser_hp.Text = (PD.electrolyser_heating_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_electrolyser_op.Text = (PD.electrolyser_output_power.ok.val ?? 0).ToString("F2") + " W";
-                // Fuelcell
-                lbl_fuelcell_ee.Text = (PD.fuelcell_efficiency_electrical.ok.val ?? 0).ToString("F2") + " %";
-                lbl_fuelcell_et.Text = (PD.fuelcell_efficiency_total.ok.val ?? 0).ToString("F2") + " %";
-                lbl_fuelcell_hp.Text = (PD.fuelcell_heating_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_fuelcell_ip.Text = (PD.fuelcell_input_power.ok.val ?? 0).ToString("F2") + " W";
-                // Grid
-                lbl_grid_p.Text = (PD.grid_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_grid_ep.Text = (PD.grid_export_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_grid_ip.Text = (PD.grid_import_power.ok.val ?? 0).ToString("F2") + " W";
-                // Hydrogen
-                lbl_hydrogen_soc.Text = (PD.hydrogen_state_of_charge.ok.val ?? 0).ToString("F2") + " %";
-                lbl_hydrogen_pe.Text = (PD.hydrogen_power_electrical.ok.val ?? 0).ToString("F2") + " W";
-                lbl_hydrogen_ope.Text = (PD.hydrogen_output_power_electrical.ok.val ?? 0).ToString("F2") + " W";
-                lbl_hydrogen_ipe.Text = (PD.hydrogen_input_power_electrical.ok.val ?? 0).ToString("F2") + " W";
-                // Solar
-                lbl_solar_op.Text = (PD.solar_output_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_opac.Text = (PD.solar_output_power_ac.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_opdct.Text = (PD.solar_output_power_dc_total.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_optb.Text = (PD.solar_output_power_to_battery.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_opteb.Text = (PD.solar_output_power_to_extbattery.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_optg.Text = (PD.solar_output_power_to_grid.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_opthh.Text = (PD.solar_output_power_to_household.ok.val ?? 0).ToString("F2") + " W";
-                lbl_solar_opthg.Text = (PD.solar_output_power_to_hydrogen.ok.val ?? 0).ToString("F2") + " W";
-                // Household
-                lbl_household_ip.Text = (PD.household_input_power.ok.val ?? 0).ToString("F2") + " W";
-                lbl_household_ipfb.Text = (PD.household_input_power_from_battery_picea.ok.val ?? 0).ToString("F2") + " W";
-                lbl_household_ipfeb.Text = (PD.household_input_power_from_extbattery.ok.val ?? 0).ToString("F2") + " W";
-                lbl_household_ipfg.Text = (PD.household_input_power_from_grid.ok.val ?? 0).ToString("F2") + " W";
-                lbl_household_ipfh.Text = (PD.household_input_power_from_hydrogen.ok.val ?? 0).ToString("F2") + " W";
-                lbl_household_ipfp.Text = (PD.household_input_power_from_picea.ok.val ?? 0).ToString("F2") + " W";
-                // is info
-                lbl_is_effi.Text = (PD.is_efficiencymode.ok.val ?? false).ToString();
-                lbl_is_ecfn.Text = (PD.is_equal_charge_from_net.ok.val ?? false).ToString();
-                lbl_is_eco.Text = (PD.is_equal_charge_ongoing.ok.val ?? false).ToString();
-                lbl_is_go.Text = (PD.is_grid_offline.ok.val ?? false).ToString();
-                lbl_is_ha.Text = (PD.is_heater_alarm.ok.val ?? false).ToString();
-                lbl_is_he.Text = (PD.is_heater_error.ok.val ?? false).ToString();
-                lbl_is_huer.Text = (PD.is_hydrogen_used_except_reserve.ok.val ?? false).ToString();
-                lbl_is_itpgfm.Text = (PD.is_in_ten_percent_grid_feedin_mode.ok.val ?? false).ToString();
-                lbl_is_launch.Text = (PD.is_launchphase.ok.val ?? false).ToString();
-                lbl_is_se.Text = (PD.is_solar_error.ok.val ?? false).ToString();
-                lbl_is_vcn.Text = (PD.is_ventilation_calibration_now.ok.val ?? false).ToString();
-                lbl_is_vdpa.Text = (PD.is_ventilation_differential_pressure_alarm.ok.val ?? false).ToString();
-                lbl_is_vffa.Text = (PD.is_ventilation_filter_full_alarm.ok.val ?? false).ToString();
-                lbl_is_vffw.Text = (PD.is_ventilation_filter_full_warning.ok.val ?? false).ToString();
-                lbl_is_we.Text = (PD.is_water_error.ok.val ?? false).ToString();
+                try
+                {
+                    // Battery
+                    lbl_battery_soc.Text = (PD.battery_state_of_charge.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_battery_p.Text = (PD.battery_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_battery_op.Text = (PD.battery_output_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_battery_ip.Text = (PD.battery_input_power.ok.val ?? 0).ToString("F2") + " W";
+                    // Ext Battery
+                    lbl_ext_battery_p.Text = (PD.extbattery_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_ext_battery_op.Text = (PD.extbattery_output_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_ext_battery_ip.Text = (PD.extbattery_input_power.ok.val ?? 0).ToString("F2") + " W";
+                    // Electrolyser
+                    lbl_electrolyser_ee.Text = (PD.electrolyser_efficiency_electrical.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_electrolyser_et.Text = (PD.electrolyser_efficiency_total.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_electrolyser_hp.Text = (PD.electrolyser_heating_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_electrolyser_op.Text = (PD.electrolyser_output_power.ok.val ?? 0).ToString("F2") + " W";
+                    // Fuelcell
+                    lbl_fuelcell_ee.Text = (PD.fuelcell_efficiency_electrical.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_fuelcell_et.Text = (PD.fuelcell_efficiency_total.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_fuelcell_hp.Text = (PD.fuelcell_heating_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_fuelcell_ip.Text = (PD.fuelcell_input_power.ok.val ?? 0).ToString("F2") + " W";
+                    // Grid
+                    lbl_grid_p.Text = (PD.grid_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_grid_ep.Text = (PD.grid_export_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_grid_ip.Text = (PD.grid_import_power.ok.val ?? 0).ToString("F2") + " W";
+                    // Hydrogen
+                    lbl_hydrogen_soc.Text = (PD.hydrogen_state_of_charge.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_hydrogen_pe.Text = (PD.hydrogen_power_electrical.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_hydrogen_ope.Text = (PD.hydrogen_output_power_electrical.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_hydrogen_ipe.Text = (PD.hydrogen_input_power_electrical.ok.val ?? 0).ToString("F2") + " W";
+                    // Solar
+                    lbl_solar_op.Text = (PD.solar_output_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_opac.Text = (PD.solar_output_power_ac.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_opdct.Text = (PD.solar_output_power_dc_total.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_optb.Text = (PD.solar_output_power_to_battery.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_opteb.Text = (PD.solar_output_power_to_extbattery.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_optg.Text = (PD.solar_output_power_to_grid.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_opthh.Text = (PD.solar_output_power_to_household.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_solar_opthg.Text = (PD.solar_output_power_to_hydrogen.ok.val ?? 0).ToString("F2") + " W";
+                    // Household
+                    lbl_household_ip.Text = (PD.household_input_power.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_household_ipfb.Text = (PD.household_input_power_from_battery_picea.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_household_ipfeb.Text = (PD.household_input_power_from_extbattery.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_household_ipfg.Text = (PD.household_input_power_from_grid.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_household_ipfh.Text = (PD.household_input_power_from_hydrogen.ok.val ?? 0).ToString("F2") + " W";
+                    lbl_household_ipfp.Text = (PD.household_input_power_from_picea.ok.val ?? 0).ToString("F2") + " W";
+                    // is info
+                    lbl_is_effi.Text = (PD.is_efficiencymode.ok.val ?? false).ToString();
+                    lbl_is_ecfn.Text = (PD.is_equal_charge_from_net.ok.val ?? false).ToString();
+                    lbl_is_eco.Text = (PD.is_equal_charge_ongoing.ok.val ?? false).ToString();
+                    lbl_is_go.Text = (PD.is_grid_offline.ok.val ?? false).ToString();
+                    lbl_is_ha.Text = (PD.is_heater_alarm.ok.val ?? false).ToString();
+                    lbl_is_he.Text = (PD.is_heater_error.ok.val ?? false).ToString();
+                    lbl_is_huer.Text = (PD.is_hydrogen_used_except_reserve.ok.val ?? false).ToString();
+                    lbl_is_itpgfm.Text = (PD.is_in_ten_percent_grid_feedin_mode.ok.val ?? false).ToString();
+                    lbl_is_launch.Text = (PD.is_launchphase.ok.val ?? false).ToString();
+                    lbl_is_se.Text = (PD.is_solar_error.ok.val ?? false).ToString();
+                    lbl_is_vcn.Text = (PD.is_ventilation_calibration_now.ok.val ?? false).ToString();
+                    lbl_is_vdpa.Text = (PD.is_ventilation_differential_pressure_alarm.ok.val ?? false).ToString();
+                    lbl_is_vffa.Text = (PD.is_ventilation_filter_full_alarm.ok.val ?? false).ToString();
+                    lbl_is_vffw.Text = (PD.is_ventilation_filter_full_warning.ok.val ?? false).ToString();
+                    lbl_is_we.Text = (PD.is_water_error.ok.val ?? false).ToString();
 
-                lbl_temp_otp.Text = (PD.outdoor_to_picea_air_temperature.ok.val ?? 0).ToString("F2") + " °C";
-                lbl_temp_pth.Text = (PD.picea_to_house_air_temperature.ok.val ?? 0).ToString("F2") + " °C";
-                lbl_temp_htp.Text = (PD.house_to_picea_air_temperature.ok.val ?? 0).ToString("F2") + " °C";
-                lbl_temp_hw.Text = (PD.hot_water_tempearture.ok.val ?? 0).ToString("F2") + " °C";
+                    lbl_temp_otp.Text = (PD.outdoor_to_picea_air_temperature.ok.val ?? 0).ToString("F2") + " °C";
+                    lbl_temp_pth.Text = (PD.picea_to_house_air_temperature.ok.val ?? 0).ToString("F2") + " °C";
+                    lbl_temp_htp.Text = (PD.house_to_picea_air_temperature.ok.val ?? 0).ToString("F2") + " °C";
+                    lbl_temp_hw.Text = (PD.hot_water_tempearture.ok.val ?? 0).ToString("F2") + " °C";
 
-                lbl_autarky.Text = (PD.autarky.ok.val ?? 0).ToString("F2") + " %";
-                lbl_co2_avoidance.Text = (PD.co2_avoidance.ok.val ?? 0).ToString("F2") + " g/h";
-                lbl_hcp.Text = (PD.heat_contribution_power.ok.val ?? 0).ToString("F2") + "W";
-                lbl_mcbd.Text = (PD.max_compressor_blockage_duration.ok.val ?? 0).ToString("F2") + "m";
-                lbl_vsr.Text = (PD.ventilation_stage_real.ok.val ?? 0).ToString();
-                lbl_htpah.Text = (PD.house_to_picea_air_humidity.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_autarky.Text = (PD.autarky.ok.val ?? 0).ToString("F2") + " %";
+                    lbl_co2_avoidance.Text = (PD.co2_avoidance.ok.val ?? 0).ToString("F2") + " g/h";
+                    lbl_hcp.Text = (PD.heat_contribution_power.ok.val ?? 0).ToString("F2") + "W";
+                    lbl_mcbd.Text = (PD.max_compressor_blockage_duration.ok.val ?? 0).ToString("F2") + "m";
+                    lbl_vsr.Text = (PD.ventilation_stage_real.ok.val ?? 0).ToString();
+                    lbl_htpah.Text = (PD.house_to_picea_air_humidity.ok.val ?? 0).ToString("F2") + " %";
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
 
             if (bfirstCheck)
@@ -461,8 +468,16 @@ namespace PiceaWindowsFormsApp
             nud_vent_temp_target.Value = Convert.ToDecimal(PSD.ventilation_temperature_target?.value ?? 18);
             cb_vne.Checked = PSD.ventilation_night_enabled.value ?? false;
             cb_ventilation_night_stage.SelectedIndex = PSD.ventilation_night_stage?.value ?? 0;
-            dtp_vent_night_start.Value = PSD.ventilation_night_time_start?.value ?? DateTime.Now;
-            dtp_vent_night_stop.Value = PSD.ventilation_night_time_end?.value ?? DateTime.Now;
+            try
+            {
+                dtp_vent_night_start.Value = PSD.ventilation_night_time_start?.value ?? DateTime.Now;
+                dtp_vent_night_stop.Value = PSD.ventilation_night_time_end?.value ?? DateTime.Now;
+            }
+            catch
+            {
+                dtp_vent_night_start.Value = DateTime.Now;
+                dtp_vent_night_stop.Value = DateTime.Now;
+            }
 
             // Surpluspower
             cb_sh.Checked = PSD.is_surpluspower_heatpump_enabled?.value ?? false;
